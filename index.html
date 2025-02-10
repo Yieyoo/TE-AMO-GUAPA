@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Corazones en el fondo */
+        body::before {
+            content: "❤️"; /* Corazón */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.5) 1px, transparent 1px) 0 0,
+                        radial-gradient(circle, rgba(255, 0, 0, 0.5) 1px, transparent 1px) 50% 50%;
+            background-size: 20px 20px; /* Tamaño del corazón */
+            background-repeat: repeat; /* Repite el patrón */
+            z-index: -1; /* Ponerlo detrás de la tarjeta */
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1; /* Asegura que la tarjeta esté por encima de las imágenes */
+            max-width: 350px; /* Limita el tamaño máximo de la tarjeta */
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px; /* Reduje el tamaño del título */
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .no {
+            background-color: #cccccc;
+            color: black;
+            position: absolute;
+        }
+
+        .image-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permite interactuar con la tarjeta y botones */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly; /* Distribuye las imágenes uniformemente */
+            align-items: center;
+            z-index: 0; /* Asegura que las imágenes estén detrás de la tarjeta */
+            gap: 20px;
+        }
+
+        .image-container img {
+            width: 250px; /* Tamaño más grande para todas las imágenes */
+            height: 250px;
+            object-fit: cover; /* Asegura que la imagen se recorte adecuadamente sin deformarse */
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1); /* Aumenta ligeramente las imágenes al pasar el cursor */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="imagenes/foto6.jpg" alt="Imagen principal">
+        <h1>Hola mi amor, ¿Quieres ser mi San Valentín? ❤️</h1>
+        <button class="btn yes" onclick="yesClick()">Sí</button>
+        <button class="btn no" id="noButton" onmouseover="moveNo()">No</button>
+    </div>
+
+    <!-- Imágenes alrededor de la tarjeta -->
+    <div class="image-container">
+        <img src="imagenes/foto1.jpg" alt="Foto 1">
+        <img src="imagenes/foto2.jpg" alt="Foto 2">
+        <img src="imagenes/foto3.jpg" alt="Foto 3">
+        <img src="imagenes/foto4.jpg" alt="Foto 4">
+        <img src="imagenes/foto5.jpg" alt="Foto 5">
+    </div>
+
+    <script>
+        function yesClick() {
+            alert("¡Sabía que dirías que sí! te amoguino mucho preciosa! ❤️🥰");
+        }
+
+        // Función para mover el botón "No" cuando el mouse se acerca
+        function moveNo() {
+            let noButton = document.querySelector("#noButton");
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
