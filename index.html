@@ -81,6 +81,7 @@
             background-color: #cccccc;
             color: black;
             margin-top: 10px; /* Se coloca debajo del botón Sí */
+            position: relative; /* Necesario para moverlo */
         }
 
         .image-container {
@@ -128,7 +129,7 @@
         <img src="imagenes/foto6.jpg" alt="Imagen principal">
         <h1>Hola mi amor, ¿Quieres ser mi San Valentín? ❤️</h1>
         <button class="btn yes" onclick="yesClick()">Sí</button>
-        <button class="btn no" onclick="noClick()">No</button> <!-- Acción fija del botón "No" -->
+        <button class="btn no" id="noButton" onclick="moveNo()">No</button> <!-- Botón "No" con función -->
     </div>
 
     <!-- Imágenes dispuestas verticalmente -->
@@ -141,12 +142,16 @@
 
     <script>
         function yesClick() {
-            alert("¡Sabía que dirías que sí! te amoguino mucho preciosa! ❤️🥰");
+            alert("¡Te amoguino mucho preciosa, nos vemos el sabado en el picnic! ❤️🥰");
         }
 
-        // Función para el botón "No"
-        function noClick() {
-            alert("¡Me has dicho que no! 😢 pero aún te quiero mucho.");
+        // Función para mover el botón "No" cada vez que se hace clic
+        function moveNo() {
+            let noButton = document.querySelector("#noButton");
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth); // Posición aleatoria X
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight); // Posición aleatoria Y
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
         }
     </script>
 </body>
