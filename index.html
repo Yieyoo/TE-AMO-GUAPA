@@ -11,10 +11,11 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            height: 100%;
+            overflow-y: scroll; /* Permite hacer scroll vertical */
             position: relative;
         }
 
@@ -44,7 +45,8 @@
             z-index: 1; /* Asegura que la tarjeta esté por encima de las imágenes */
             max-width: 350px; /* Limita el tamaño máximo de la tarjeta */
             text-align: center;
-            width: 100%; /* Asegura que la tarjeta ocupe el 100% del espacio disponible */
+            margin-top: 100px; /* Da espacio superior para desplazarse */
+            width: 100%;
         }
 
         .card img {
@@ -77,7 +79,6 @@
         .no {
             background-color: #cccccc;
             color: black;
-            position: absolute;
         }
 
         .image-container {
@@ -91,6 +92,7 @@
             align-items: center;
             z-index: 0; /* Asegura que las imágenes estén detrás de la tarjeta */
             gap: 20px;
+            top: 200px; /* Mueve las imágenes hacia abajo un poco */
         }
 
         .image-container img {
@@ -128,7 +130,7 @@
         <img src="imagenes/foto6.jpg" alt="Imagen principal">
         <h1>Hola mi amor, ¿Quieres ser mi San Valentín? ❤️</h1>
         <button class="btn yes" onclick="yesClick()">Sí</button>
-        <button class="btn no" id="noButton" onmouseover="moveNo()">No</button>
+        <button class="btn no">No</button>
     </div>
 
     <!-- Imágenes alrededor de la tarjeta -->
@@ -144,15 +146,7 @@
         function yesClick() {
             alert("¡Sabía que dirías que sí! te amoguino mucho preciosa! ❤️🥰");
         }
-
-        // Función para mover el botón "No" cuando el mouse se acerca
-        function moveNo() {
-            let noButton = document.querySelector("#noButton");
-            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-        }
     </script>
 </body>
 </html>
+
