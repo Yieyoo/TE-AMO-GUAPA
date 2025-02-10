@@ -44,13 +44,11 @@
             z-index: 1; /* Asegura que la tarjeta esté por encima de las imágenes */
             max-width: 350px; /* Limita el tamaño máximo de la tarjeta */
             text-align: center;
-            width: 100%; /* Asegura que la tarjeta ocupe el 100% del espacio disponible */
         }
 
         .card img {
-            width: 100%;
+            width: 80%;  /* Reducción del tamaño de la imagen principal */
             height: auto;
-            max-width: 300px;
             margin-bottom: 20px;
         }
 
@@ -78,6 +76,7 @@
             background-color: #cccccc;
             color: black;
             position: absolute;
+            transition: top 0.3s ease, left 0.3s ease; /* Suaviza el movimiento */
         }
 
         .image-container {
@@ -103,23 +102,6 @@
 
         .image-container img:hover {
             transform: scale(1.1); /* Aumenta ligeramente las imágenes al pasar el cursor */
-        }
-
-        /* Estilos para pantallas pequeñas (móviles) */
-        @media (max-width: 768px) {
-            .card {
-                width: 80%; /* La tarjeta ocupa el 80% del ancho en pantallas pequeñas */
-            }
-
-            .image-container img {
-                width: 150px; /* Reducir el tamaño de las imágenes en móviles */
-                height: 150px;
-            }
-
-            .btn {
-                padding: 15px 30px;
-                font-size: 20px;
-            }
         }
     </style>
 </head>
@@ -148,12 +130,11 @@
         // Función para mover el botón "No" cuando el mouse se acerca
         function moveNo() {
             let noButton = document.querySelector("#noButton");
-            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth - 20);  // Ajuste del movimiento en x
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight - 20); // Ajuste del movimiento en y
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         }
     </script>
 </body>
 </html>
-
